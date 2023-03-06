@@ -14,10 +14,10 @@ section{
         background-position: center center;
 
         /* Si el browser NO supportea background-blend-mode: multiply, entonces setea el siguiente codigo */
-        @supports not (background-blend-mode: multiply) {
+       /*  @supports not (background-blend-mode: multiply) {
             background-image: none;
             background-color: #222;           
-        }
+        } */
         
         .container{
 
