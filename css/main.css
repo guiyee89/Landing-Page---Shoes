@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1.6;
+}
+
+.spacing > * + * {
+  margin-top: var(--spacer, 2rem);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--clr-text, #fff);
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  background: var(--clr-accent, blue);
+  border-radius: 0.25rem;
+  transition: transform 250ms ease-in-out, opacity 250ms linear;
+}
+.btn:hover, .btn:focus {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+section .hero {
+  text-align: center;
+  padding: 15rem 0;
+  color: rgb(255, 252, 252);
+  background-image: url(../img/shoe-3.png), radial-gradient(#747070, #111);
+  background-blend-mode: multiply;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* Si el browser NO supportea background-blend-mode: multiply, entonces setea el siguiente codigo */
+}
+@supports not (background-blend-mode: multiply) {
+  section .hero {
+    background-image: none;
+    background-color: #222;
+  }
+}
+section .hero .container .primary-title {
+  font-size: 4rem;
+  /* CLAMP: el minimo del titulo sera 3rem, el maximo 4.5rem.. Y calculo de crecimiento sera al rate de 1rem cada 5vw 
+  Conclusion: RESPONSIVE TYPO*/
+  font-size: clamp(3rem, 5vw + 1rem, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.featured,
+.our-products {
+  background: #eee;
+}
+.featured .container,
+.our-products .container {
+  width: 85%;
+  margin: 0 auto;
+  max-width: 65rem;
+}
+.featured .container .section-title,
+.our-products .container .section-title {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: 1;
+  color: #17353d;
+  margin-top: 5.5rem;
+  margin-bottom: 5rem;
+}
+.featured .container .split,
+.our-products .container .split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  /*    & > * Todos los hijos directos del split      */
+}
+.featured .container .split > *,
+.our-products .container .split > * {
+  min-width: 15rem;
+  flex-basis: 30%; /* Al darle display: flex a algo, los hijos adquieren un DEFAULT width de 100%. Con flex-basis cambiamos eso  */
+  margin-bottom: 1.5rem;
+}
+.featured .container .split .featured-item,
+.our-products .container .split .featured-item {
+  display: block;
+  position: relative;
+  transform: scale(0.85);
+  transition: transform 250ms ease-in-out;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+.featured .container .split .featured-item span,
+.our-products .container .split .featured-item span {
+  display: block; /* el span corresponde a $99. Hacemos de el precio que ocupe el bloque entero */
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+.featured .container .split .featured-item .featured-details,
+.our-products .container .split .featured-item .featured-details {
+  opacity: 0;
+  transition: opacity 250ms linear;
+  text-shadow: 0 0 0.2em white; /* para darle contorno a los numeros $99 */
+}
+.featured .container .split .featured-item:hover, .featured .container .split .featured-item:focus,
+.our-products .container .split .featured-item:hover,
+.our-products .container .split .featured-item:focus {
+  transform: scale(1);
+}
+.featured .container .split .featured-item:hover .featured-details, .featured .container .split .featured-item:focus .featured-details,
+.our-products .container .split .featured-item:hover .featured-details,
+.our-products .container .split .featured-item:focus .featured-details { /* TRUCO -> Como el hover y focus estan en featured-item, podemos usar esta propiedad aqui */
+  opacity: 1;
+}
+.featured .container .split .featured-item::after,
+.our-products .container .split .featured-item::after { /* Cada vez que usamos un PSEUDO ELEMENTO hay que darle un content: ""; */
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  z-index: -1;
+  /* truquito con padding para que el container se vuelva un circulo */
+  padding: 85% 85% 0 0;
+  border-radius: 50%;
+  background: #2193b0;
+}
+
+.our-products {
+  width: 95%;
+  margin: 0 auto;
+  background-color: transparent;
+}
+.our-products .container .product {
+  background: radial-gradient(var(--clr-inner, rgb(211, 237, 211)), var(--clr-outer, purple));
+  padding: 3rem 0;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */

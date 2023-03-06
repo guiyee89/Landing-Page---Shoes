@@ -1,0 +1,132 @@
+@use "./variables" as vars;
+
+section{
+
+    .hero{      
+        text-align: center;
+        padding: 15rem 0;
+        color: rgb(255, 252, 252);
+        background-image: url(../img/shoe-3.png),
+             radial-gradient(#747070, #111);
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        /* Si el browser NO supportea background-blend-mode: multiply, entonces setea el siguiente codigo */
+        @supports not (background-blend-mode: multiply) {
+            background-image: none;
+            background-color: #222;           
+        }
+        
+        .container{
+
+            .primary-title{
+                font-size: 4rem;
+                /* CLAMP: el minimo del titulo sera 3rem, el maximo 4.5rem.. Y calculo de crecimiento sera al rate de 1rem cada 5vw 
+                Conclusion: RESPONSIVE TYPO*/
+                font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
+                line-height: 1;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.featured,
+.our-products{
+    background: #eee;
+
+    .container {
+        width: 85%;
+        margin: 0 auto;
+        max-width: 65rem;  
+
+        .section-title{
+            text-align: center;
+            font-size: clamp(2.5rem, calc(5vw + 1rem), 4rem);
+            line-height: 1;
+            color: #17353d;
+            margin-top: 5.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .split{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            /*    & > * Todos los hijos directos del split      */
+            & > * {
+                min-width: 15rem;
+                flex-basis: 30%; /* Al darle display: flex a algo, los hijos adquieren un DEFAULT width de 100%. Con flex-basis cambiamos eso  */
+                margin-bottom: 1.5rem;
+                
+            }
+            
+            .featured-item{
+                display: block;
+                position: relative;
+                transform: scale(.85);
+                transition: transform 250ms ease-in-out;
+                text-decoration: none;
+                color: #333;
+                text-align: center;
+
+                span{   
+                    display: block;  /* el span corresponde a $99. Hacemos de el precio que ocupe el bloque entero */
+                    font-weight: 700;
+                    font-size: 2.5rem;
+                    line-height: 1.2;
+                }
+                
+                .featured-details{
+                    opacity: 0;
+                    transition: opacity 250ms linear;
+                    text-shadow: 0 0 .2em rgba(#fff, 1); /* para darle contorno a los numeros $99 */
+                }
+
+                &:hover,
+                &:focus{
+                    transform: scale(1);
+
+                    .featured-details{ /* TRUCO -> Como el hover y focus estan en featured-item, podemos usar esta propiedad aqui */
+                        opacity: 1;
+                    }
+                }
+
+                &::after{ /* Cada vez que usamos un PSEUDO ELEMENTO hay que darle un content: ""; */
+                    content: "";
+                    position: absolute;
+                    top: 5%;
+                    left: 15%;
+                    z-index: -1;
+                    
+                    /* truquito con padding para que el container se vuelva un circulo */
+                    padding: 85% 85% 0 0;
+                    border-radius: 50%;
+                    background: #2193b0;
+
+                }
+            }
+        
+        }
+    }
+}
+
+.our-products{
+    width: 95%;
+    margin: 0 auto;
+    background-color: transparent;
+    .container{
+
+        .product{ 
+            
+            background: radial-gradient(var(--clr-inner, rgb(211, 237, 211)), var(--clr-outer,purple));
+            padding: 3rem 0;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+    }
+}
