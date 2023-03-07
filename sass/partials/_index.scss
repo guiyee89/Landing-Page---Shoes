@@ -74,6 +74,10 @@ section{
                 color: #333;
                 text-align: center;
 
+                    .five{
+                        margin-bottom: 15px;
+                    }
+                
                 span{   
                     display: block;  /* el span corresponde a $99. Hacemos de el precio que ocupe el bloque entero */
                     font-weight: 700;

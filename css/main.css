@@ -112,6 +112,10 @@ section .hero .container .primary-title {
   color: #333;
   text-align: center;
 }
+.featured .container .split .featured-item .five,
+.our-products .container .split .featured-item .five {
+  margin-bottom: 15px;
+}
 .featured .container .split .featured-item span,
 .our-products .container .split .featured-item span {
   display: block; /* el span corresponde a $99. Hacemos de el precio que ocupe el bloque entero */
