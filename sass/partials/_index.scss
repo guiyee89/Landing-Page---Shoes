@@ -3,6 +3,7 @@
 section{
 
     .hero{      
+        --clr-accent: #faa700;
         text-align: center;
         padding: 15rem 0;
         color: rgb(255, 252, 252);
@@ -118,15 +119,100 @@ section{
     width: 95%;
     margin: 0 auto;
     background-color: transparent;
+
     .container{
 
+        .section-title{
+            text-shadow: .2rem .2rem .7rem rgba(#000, .5);
+        }
+        .shoe-red{
+            --clr-inner: #faba3a;
+            --clr-outer: #b37005;
+            --clr-accent: #a1173c;
+        }
+        .shoe-white{
+            --clr-inner: #fce4b3;
+            --clr-outer: #b09661;
+            --clr-accent: #2f4858;
+        }
+        .shoe-white-black{
+            --clr-inner: #79dcf2;
+            --clr-outer: #1d8098;
+            --clr-accent: #a9e4e2;
+            --clr-text: rgb(36, 34, 34);
+        }
+
+        /* Podemos definir algo con var(--clr- ...) en algun momento, y luego reutilizarlo en otros lugares
+        En este caso tenia las variables --clr-inner y --clr-text en .BTN guardadas...
+        Y --clr-inner y --clr-outer en background del producto */
         .product{ 
-            
-            background: radial-gradient(var(--clr-inner, rgb(211, 237, 211)), var(--clr-outer,purple));
+            background: radial-gradient(var(--clr-inner, rgb(211, 237, 211)), var(--clr-outer,rgb(232, 117, 232)));
             padding: 3rem 0;
             border-radius: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
             text-align: center;
+
+            &-title{
+                font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+                color: #fff;
+                text-shadow: 0 0 .5rem rgba(#000, .5);
+                line-height: 1.1;
+                text-transform: uppercase;
+            }
+            &-image{
+                margin: -5rem 0 0 0;
+            }
+            &-description{
+                text-shadow: 0 0 .5rem rgba(#000, .5);
+                font-weight: 300;
+            }
+
+            @media (min-width: 45rem){
+                text-align: left;
+                margin-bottom: 5rem;
+                
+                &-title{
+                    margin: 1rem 2rem;
+                }
+
+                &-description,
+                .btn{
+                    margin: 1rem 2rem;
+                }
+
+                &-image{
+                    width: 50%;
+
+                    float: right;  /* float + width 50% cambian la estructura del contenedor, parecido a si usuaramos Flex.. Pero hace que el resto del contenido FLOTAEE alrededor */
+
+                    shape-outside: url(../img/shoe-1.png);
+                    /* shape-outside: url... lo mismo pero sobre esa imagen */
+                    /* shape-outside: circle(50%)  *//* shape-outside es excelente. Usualmente el contenedor es cuadrado, en este caso le da un % circular al contenedor para que el resto del contenido ocupe los espacios blancos */
+                    
+                    margin: 0 -4rem 0 0;
+                }               
+
+                &.shoe-white{
+                    text-align: right;
+
+                    .product-image{
+                        shape-outside: url(../img/shoe-2.png);
+                        float: left;
+                        margin: 0 0 0 -2rem;
+                        shape-margin: 1rem;
+                    }
+                }
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
