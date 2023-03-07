@@ -231,6 +231,9 @@ section .hero .container .primary-title {
     margin: 0 0 0 -2rem;
     shape-margin: 1rem;
   }
+  .our-products .container .product .featured-item .five {
+    margin-bottom: 15px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
