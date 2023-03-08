@@ -237,4 +237,69 @@ section .hero .container .primary-title {
   }
 }
 
+.footer {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+.footer .logo-menu,
+.footer .icons-copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.footer .logo-menu .logo-footer,
+.footer .icons-copyright .logo-footer {
+  cursor: pointer;
+}
+.footer .logo-menu .footer-menu ul,
+.footer .icons-copyright .footer-menu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.footer .logo-menu .footer-menu ul li a,
+.footer .icons-copyright .footer-menu ul li a {
+  font-family: sans-serif;
+  color: white;
+  font-size: 0.75rem;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.footer .logo-menu .icons,
+.footer .icons-copyright .icons {
+  display: flex;
+  gap: 1.3rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.footer .logo-menu .copyright,
+.footer .icons-copyright .copyright {
+  color: gray;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 45rem) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3rem 8rem;
+  }
+  .footer .logo-menu {
+    align-items: start;
+  }
+  .footer .logo-menu .footer-menu ul {
+    flex-direction: row;
+  }
+  .footer .logo-menu .icons-copyright {
+    align-items: end;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
